@@ -1,0 +1,5 @@
+[
+  {"directory": ".", "file": "src/main.cpp", "arguments": ["c++", "-std=c++17", "-Iinclude", "-isystem", "third_party", "-c", "src/main.cpp"]},
+  {"directory": ".", "file": "src/server.cpp", "arguments": ["c++", "-std=c++17", "-Iinclude", "-isystem", "third_party", "-c", "src/server.cpp"]},
+  {"directory": ".", "file": "src/tool.cpp", "command": "c++ -std=c++17 -Iinclude -isystem third_party -c src/tool.cpp"}
+]
