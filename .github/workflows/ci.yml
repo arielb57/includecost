@@ -12,7 +12,9 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
+      # Pinned: `-D warnings` on a floating stable turns a clippy release
+      # into a build break with no change here. Bump deliberately.
+      - uses: dtolnay/rust-toolchain@1.94.1
         with:
           components: clippy, rustfmt
       - uses: Swatinem/rust-cache@v2
@@ -26,3 +28,22 @@ jobs:
         run: cargo run --release -- analyze examples/demo/compile_commands.json
       - name: Benchmark (quick)
         run: cargo run --release --example benchmark -- --quick
+
+  # Tests also run against current stable, so real breakage still surfaces
+  # even though the lint job is pinned.
+  test-stable:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo test --all-targets
+
+  # The MSRV in Cargo.toml is a promise, so it gets tested rather than asserted.
+  msrv:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.74.0
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo check --all-targets
