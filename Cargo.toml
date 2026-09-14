@@ -1,0 +1,15 @@
+[package]
+name = "includecost"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.74"
+description = "Find the C/C++ headers whose removal would delete the most preprocessed code, proven by dominators"
+license = "MIT"
+readme = "README.md"
+keywords = ["cpp", "headers", "compile-time", "dominators", "include"]
+categories = ["development-tools", "command-line-utilities"]
+
+[dependencies]
+
+[profile.release]
+debug = false
