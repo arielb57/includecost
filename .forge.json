@@ -14,9 +14,9 @@
   "gate": {
     "stats": {
       "sourceFiles": 18,
-      "testFiles": 5,
-      "testCases": 27,
-      "assertions": 127,
+      "testFiles": 9,
+      "testCases": 38,
+      "assertions": 154,
       "readmeWords": 2147,
       "testsPassed": true,
       "lintPassed": true
